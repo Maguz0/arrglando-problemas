@@ -1,0 +1,42 @@
+/* ================================================================= */
+/* === Aplica a TODOS los botones de "Me gusta" (tracklist y playbar) === */
+/* ================================================================= */
+/* Oculta elementos originales (SVG, +, -) en todas las ubicaciones */
+[data-testid="tracklist-row"] button[aria-label^="Agregar a tus Me gusta"] > div > *,
+[data-testid="tracklist-row"] button[aria-label^="Eliminar de tus Me gusta"] > div > *,
+[data-testid="now-playing-bar"] button[aria-label^="Agregar a tus Me gusta"] > div > *, /* Playbar */
+[data-testid="now-playing-bar"] button[aria-label^="Eliminar de tus Me gusta"] > div > * {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* Corazón verde personalizado en todas las ubicaciones */
+[data-testid="tracklist-row"] button[aria-label^="Agregar a tus Me gusta"]::after,
+[data-testid="tracklist-row"] button[aria-label^="Eliminar de tus Me gusta"]::after,
+[data-testid="now-playing-bar"] button[aria-label^="Agregar a tus Me gusta"]::after, /* Playbar */
+[data-testid="now-playing-bar"] button[aria-label^="Eliminar de tus Me gusta"]::after {
+    content: "" !important;
+    display: block !important;
+    width: 22px !important;
+    height: 22px !important;
+    background: url('https://i.ibb.co/3WY4x8T/heart-green-spotify.png') no-repeat center !important;
+    background-size: 18px !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1)) !important;
+    z-index: 9999 !important;
+}
+
+/* Efecto hover para todos los corazones */
+[data-testid="tracklist-row"] button[aria-label^="Agregar a tus Me gusta"]:hover::after,
+[data-testid="now-playing-bar"] button[aria-label^="Agregar a tus Me gusta"]:hover::after {
+    transform: translate(-50%, -50%) scale(1.1) !important;
+}
+
+/* Estado "like dado" en todas las ubicaciones */
+[data-testid="tracklist-row"] button[aria-label^="Eliminar de tus Me gusta"]::after,
+[data-testid="now-playing-bar"] button[aria-label^="Eliminar de tus Me gusta"]::after {
+    filter: brightness(1.2) !important;
+}
